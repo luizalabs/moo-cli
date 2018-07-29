@@ -1,0 +1,47 @@
+{
+  "name": "moo-cli",
+  "version": "1.0.0",
+  "description": "A MOOvelous CLI",
+  "main": "dir/index.js",
+  "scripts": {
+    "start": "tsc start",
+    "build": "tsc build",
+    "test": "tsc test --env=jsdom",
+    "eject": "tsc eject",
+    "changelog": "node config/git/genChangelog.js run",
+    "push": "git commit -a -m",
+    "precommit": "lint-staged",
+    "commitmsg": "node config/git/verifyCommitMsg.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SoftboxLab/moo-cli.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SoftboxLab/moo-cli/issues"
+  },
+  "homepage": "https://github.com/SoftboxLab/moo-cli#readme",
+  "lint-staged": {
+    "*.{ts}": [
+      "tslint --fix",
+      "git add"
+    ],
+    "packages/**/bin/*": [
+      "tslint --fix",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "chalk": "^2.4.1",
+    "conventional-changelog": "^2.0.1",
+    "execa": "^0.10.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.2.0",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.14.0",
+    "typescript": "^2.9.2"
+  }
+}
