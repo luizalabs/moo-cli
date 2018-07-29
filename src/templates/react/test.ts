@@ -9,4 +9,4 @@ test('should render the {{name}} component', async () => {
   expect(wrapper.first().hasClass('{{name}}')).toMatchSnapshot(){{#airbnb}};{{/airbnb}}
   expect(wrapper).toMatchSnapshot(){{#airbnb}};{{/airbnb}}
 }){{#airbnb}};{{/airbnb}}
-`.trim()
+`.trim();

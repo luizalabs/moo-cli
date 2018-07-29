@@ -24,17 +24,17 @@ cli
   .command('build <name>')
   .description('build a .js or .vue file in production mode with zero config')
   // .option('-n, --name <name>', 'name for lib or web-component mode (default: Cow)', 'Cow')
-  .option('-d, --dest <dir>', 'output directory (default: src)', './src/components')
+  .option('-d, --dest [dir]', 'output directory (default: src/components)', './src/components')
   .option('-r, --react', 'build something for react')
   .option('-v, --vue', 'build something for vue')
   .option('-n, --angular', 'build something for angular')
-  .option('-f, --flux', 'set redux flag')
+  .option('-x, --flux', 'set redux flag')
   .option('-a, --airbnb', 'set airbnb flag')
   .option('-f, --functional', 'create functional stuff (if it can...)')
   .option('-t, --test', 'set test flag (this will build some tests for ya (if it can...))')
-  .action((cmd) => {
+  .action((name, cmd) => {
     const args = cleanArgs(cmd);
-    require('./commands/build').default(getFramework(args), args);
+    require('./commands/build').default(getFramework(args), Object.assign({}, { name }, args));
   });
 
 if (cli.hello) {
