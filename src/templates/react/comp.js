@@ -1,11 +1,11 @@
 export default `import React, { Component } from 'react'{{#airbnb}};{{/airbnb}}
-{{#redux}}import { connect } from 'react-redux'{{#airbnb}};{{/airbnb}}{{/redux}}
+{{#flux}}import { connect } from 'react-redux'{{#airbnb}};{{/airbnb}}{{/flux}}
 import PropTypes from 'prop-types'{{#airbnb}};{{/airbnb}}
 
-{{#redux}}function mapStateToProps(state) {
+{{#flux}}function mapStateToProps(state) {
   return {
   };
-}{{/redux}}
+}{{/flux}}
 
 class {{name}} extends Component {
   render () {
@@ -23,9 +23,9 @@ class {{name}} extends Component {
 {{name}}.propTypes = {
 }{{#airbnb}};{{/airbnb}}
 
-{{^redux}}export default {{name}}{{#airbnb}};{{/airbnb}}{{/redux}}
+{{^flux}}export default {{name}}{{#airbnb}};{{/airbnb}}{{/flux}}
 
-{{#redux}}export default connect(
+{{#flux}}export default connect(
   mapStateToProps{{#airbnb}},{{/airbnb}}
-)({{name}}){{#airbnb}};{{/airbnb}}{{/redux}}
+)({{name}}){{#airbnb}};{{/airbnb}}{{/flux}}
 `.trim()
