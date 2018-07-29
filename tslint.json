@@ -1,15 +1,16 @@
 {
-  "extends": [
-    "tslint:recommended",
-    "tslint-config-prettier"
-  ],
-  "linterOptions": {
-    "exclude": [
-      "config/**/*.js",
-      "node_modules/**/*.ts"
-    ]
-  },
-  "rules": {
-    "no-debugger": false
-  }
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended",
+        "tslint-eslint-rules"
+    ],
+    "jsRules": {},
+    "rules": {
+      "no-console": false,
+      "quotemark": [
+        true,
+        "single"
+      ]
+    },
+    "rulesDirectory": []
 }

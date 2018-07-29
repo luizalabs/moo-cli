@@ -1,13 +1,15 @@
 {
   "name": "moo-cli",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "A MOOvelous CLI",
-  "main": "dir/index.js",
+  "main": "dist/index.js",
+  "bin": "dist/index.js",
   "scripts": {
-    "start": "tsc start",
-    "build": "tsc build",
-    "test": "tsc test --env=jsdom",
-    "eject": "tsc eject",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "check": "tsc --noEmit",
+    "lint": "tslint -p . -c tslint.json",
+    "test": "jest",
     "changelog": "node config/git/genChangelog.js run",
     "push": "git commit -a -m",
     "precommit": "lint-staged",
@@ -17,9 +19,19 @@
     "type": "git",
     "url": "git+https://github.com/SoftboxLab/moo-cli.git"
   },
-  "keywords": [],
+  "keywords": [
+    "cli",
+    "command",
+    "line",
+    "interface",
+    "tool",
+    "frontend",
+    "web",
+    "projects",
+    "js"
+  ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/SoftboxLab/moo-cli/issues"
   },
@@ -35,13 +47,21 @@
     ]
   },
   "devDependencies": {
+    "@types/commander": "^2.12.2",
+    "@types/jest": "^23.3.1",
+    "@types/node": "^10.5.3",
     "chalk": "^2.4.1",
     "conventional-changelog": "^2.0.1",
     "execa": "^0.10.0",
     "husky": "^0.14.3",
+    "jest": "^23.4.1",
     "lint-staged": "^7.2.0",
+    "ts-jest": "^23.0.1",
     "tslint": "^5.11.0",
-    "tslint-config-prettier": "^1.14.0",
+    "tslint-eslint-rules": "^5.3.1",
     "typescript": "^2.9.2"
+  },
+  "dependencies": {
+    "commander": "^2.16.0"
   }
 }
