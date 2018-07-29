@@ -12,14 +12,11 @@ const default_path_1 = require("./default-path");
 const writeFile = (fileContent, fileName, fileExtension, path) => {
     const candidateFileName = `${fileName}.${fileExtension}`;
     const dataPath = `${path}/${fileName}`;
-    if (ShellJS.test('-e', `${dataPath}.${fileExtension}`)) {
-        ShellJS.mkdir('-p', dataPath);
-        ShellJS.cd(dataPath);
-        new ShellJS.ShellString(fileContent)
-            .to(`${candidateFileName}`);
-        ShellJS.cd(default_path_1.projectRootPath(dataPath));
-        return;
-    }
-    console.warn('This component already exists');
+    ShellJS.mkdir('-p', dataPath);
+    ShellJS.cd(dataPath);
+    ShellJS.echo(fileContent)
+        .to(`${candidateFileName}`);
+    ShellJS.cd(default_path_1.projectRootPath(dataPath));
+    return;
 };
 exports.default = writeFile;
