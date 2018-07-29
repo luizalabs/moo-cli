@@ -3,11 +3,13 @@
 import cli from 'commander';
 import cowsay from 'cowsay';
 import pack from '../package.json';
+import menu from './menu';
 
 cli
   .version(pack.version)
   .option('--hi, --hello', 'Say hello')
   .option('-s, --say [type]', 'Say what you want')
+  .option('-m, --menu', 'Open menu')
   .parse(process.argv);
 
 if (cli.hello) {
@@ -24,4 +26,8 @@ if (cli.say) {
       text: cli.say,
     }),
   );
+}
+
+if (cli.menu) {
+  menu();
 }
