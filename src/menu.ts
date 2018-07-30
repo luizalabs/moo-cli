@@ -27,7 +27,7 @@ export default function menu() {
         case 'friend':
           console.log(
             cowsay.say({
-              text: 'Hello! I am a MOOvelous CLI and your new friend.',
+              text: 'Hello! I am a MOOvelous CLI and your new friend. 😊',
             }),
           );
           break;

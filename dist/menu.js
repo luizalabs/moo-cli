@@ -28,7 +28,7 @@ function menu() {
         switch (resp.opt) {
             case 'friend':
                 console.log(cowsay_1.default.say({
-                    text: 'Hello! I am a MOOvelous CLI and your new friend.',
+                    text: 'Hello! I am a MOOvelous CLI and your new friend. 😊',
                 }));
                 break;
             case 'motivation':

@@ -5,11 +5,11 @@ export default `<template>
 </template>
 
 <script>
-  {{#redux}}import {
+  {{#flux}}import {
     mapActions,
     mapGetters
   } from 'vuex'{{#airbnb}};{{/airbnb}}
-  {{/redux}}
+  {{/flux}}
   export default {
     name: '{{name}}',
     components: {
@@ -21,16 +21,16 @@ export default `<template>
       }{{#airbnb}};{{/airbnb}}
     },
     computed: {
-      {{#redux}}...mapGetters([
+      {{#flux}}...mapGetters([
         // ...
-      ]){{#airbnb}},{{/airbnb}}{{/redux}}
-      {{^redux}}// ...{{/redux}}
+      ]){{#airbnb}},{{/airbnb}}{{/flux}}
+      {{^flux}}// ...{{/flux}}
     },
     methods: {
-      {{#redux}}...mapActions({
+      {{#flux}}...mapActions({
         // ...
-      }){{#airbnb}},{{/airbnb}}{{/redux}}
-      {{^redux}}// ...{{/redux}}
+      }){{#airbnb}},{{/airbnb}}{{/flux}}
+      {{^flux}}// ...{{/flux}}
     }{{#airbnb}},{{/airbnb}}
   }{{#airbnb}};{{/airbnb}}
 </script>`

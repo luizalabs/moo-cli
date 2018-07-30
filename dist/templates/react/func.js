@@ -1,4 +1,6 @@
-export default `import React, { Component } from 'react'{{#airbnb}};{{/airbnb}}
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = `import React, { Component } from 'react'{{#airbnb}};{{/airbnb}}
 import PropTypes from 'prop-types'{{#airbnb}};{{/airbnb}}
 
 const {{name}} = () => (
@@ -14,4 +16,4 @@ const {{name}} = () => (
 }{{#airbnb}};{{/airbnb}}
 
 export default {{name}}{{#airbnb}};{{/airbnb}}
-`.trim()
+`.trim();
