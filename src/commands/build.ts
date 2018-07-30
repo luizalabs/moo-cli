@@ -5,7 +5,6 @@ import reactFuncComp from '../templates/react/func.js';
 import reactTest from '../templates/react/test.js';
 import writeFile from '../utils/write-file';
 
-
 // const TEMPLATE_PATH = pathInSrc('templates');
 
 const getFileExtension = ({ vue }: { vue: boolean }) => {
@@ -50,5 +49,4 @@ export default async (framework: string, options: any) => {
     const testTemplate = Mustache.render(getTemplate(framework, 'test'), options);
     writeFile(testTemplate, name, 'test.js', dest);
   }
-
-}
+};
