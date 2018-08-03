@@ -11,12 +11,11 @@ const writeFile = (fileContent: string, fileName: string, fileExtension: string,
   ShellJS.echo(fileContent)
     .to(`${candidateFileName}`);
 
-  ShellJS.cd(projectRootPath(dataPath))
+  ShellJS.cd(projectRootPath(dataPath));
   return;
   // }
 
   // console.warn('This component already exists');
-}
-
+};
 
 export default writeFile;

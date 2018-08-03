@@ -7,4 +7,4 @@ export interface ICommandOptions {
   airbnb: boolean;
   functional: boolean;
   test: boolean;
-};
+}
