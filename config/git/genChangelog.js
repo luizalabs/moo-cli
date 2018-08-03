@@ -28,6 +28,6 @@ const gen = module.exports = version => {
 }
 
 if (process.argv[2] === 'run') {
-  const version = require('../lerna.json').version
+  const version = require('../../package.json').version
   gen(version)
 }
