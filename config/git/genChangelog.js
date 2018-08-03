@@ -6,20 +6,24 @@ const gen = module.exports = version => {
     .createWriteStream(`CHANGELOG.md`)
 
   cc({
-    preset: 'angular',
-    releaseCount: 0,
-    pkg: {
-      transform (pkg) {
-        pkg.version = `v${version}`
-        return pkg
+      preset: 'angular',
+      releaseCount: 0,
+      pkg: {
+        transform(pkg) {
+          pkg.version = `v${version}`
+          return pkg
+        }
       }
-    }
-  })
+    })
     .pipe(fileStream)
     .on('close', async () => {
       delete process.env.PREFIX
-      await execa('git', ['add', '-A'], { stdio: 'inherit' })
-      await execa('git', ['commit', '-m', `chore: ${version} changelog [ci skip]`], { stdio: 'inherit' })
+      await execa('git', ['add', '-A'], {
+        stdio: 'inherit'
+      })
+      await execa('git', ['commit', '-m', `chore: ${version} changelog [ci skip]`], {
+        stdio: 'inherit'
+      })
     })
 }
 

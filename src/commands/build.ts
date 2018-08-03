@@ -49,5 +49,4 @@ export default async (framework: string, options: any) => {
     const testTemplate = Mustache.render(getTemplate(framework, 'test'), options);
     writeFile(testTemplate, name, 'test.js', dest);
   }
-
 };
