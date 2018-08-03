@@ -1,9 +1,11 @@
 {
-  "name": "moo-cli",
-  "version": "0.0.0-development",
+  "name": "@softboxlab/moo-cli",
+  "version": "0.0.1",
   "description": "A MOOvelous CLI",
   "main": "dist/index.js",
-  "bin": "dist/index.js",
+  "bin": {
+    "moo-cli": "dist/index.js"
+  },
   "scripts": {
     "watch": "tsc -w",
     "check": "tsc --noEmit",
@@ -12,10 +14,6 @@
     "gitrelease": "github-release",
     "build": "npm run check && npm run lint && tsc",
     "test": "jest",
-    "precommit": "lint-staged",
-    "push": "git commit -a -m",
-    "changelog": "node config/git/genChangelog.js run",
-    "commitmsg": "node config/git/verifyCommitMsg.js",
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release"
   },
@@ -24,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/SoftboxLab/moo-cli.git"
+    "url": "git+https://github.com/SoftboxLab/moo-cli.git"
   },
   "keywords": [
     "cli",
@@ -37,7 +35,7 @@
     "projects",
     "js"
   ],
-  "author": "",
+  "author": "Alex Bruno <alexcaceres@softbox.com.br>, Lucas Vilaboim <lucasvilaboim@softbox.com.br>, Pablo Henrique Penha Silva <pablohpsilva@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/SoftboxLab/moo-cli/issues"
