@@ -17,6 +17,14 @@ script:
   # - npm version patch
   # - git push
   # - git push --tags
+before_deploy: "echo 'ready? LETS DO IIITT!!!'"
+deploy:
+  provider: npm
+  email: "pablohpsilva@gmail.com"
+  api_key: "5e15eb4f-4635-4fdb-acd9-c1dd81a0c79a"
+  on:
+    tags: true
+    branch: master
 branches:
   only:
     - master
