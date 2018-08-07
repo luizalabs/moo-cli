@@ -34,6 +34,7 @@ before_deploy:
   - rm -rf package-* yarn.*
   - rm -rf ts*
 deploy:
+  skip_cleanup: true
   provider: npm
   email: pablohpsilva@gmail.com
   api_key:
