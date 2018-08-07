@@ -28,5 +28,4 @@ deploy:
 branches:
   only:
     - master
-    - feature/travis
     - release*
