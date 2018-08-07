@@ -1,31 +1,24 @@
 language: node_js
 node_js:
-  - '9.10.0'
+- 9.10.0
 sudo: false
 before_install:
-  - curl -o- -L https://yarnpkg.com/install.sh | bash -s
-  - export PATH="$HOME/.yarn/bin:$PATH"
-  - yarn -v
-  - npm i -g npm
+- curl -o- -L https://yarnpkg.com/install.sh | bash -s
+- export PATH="$HOME/.yarn/bin:$PATH"
+- yarn -v
+- npm i -g npm
 install:
-  - yarn add --dev --ignore-scripts babel-cli
-  - yarn --ignore-scripts
+- yarn add --dev --ignore-scripts babel-cli
+- yarn --ignore-scripts
 script:
-  - yarn lintfix
-  # - yarn coverage
-  - yarn build
-  # - npm version patch
-  # - git push
-  # - git push --tags
-before_deploy: "echo 'ready? LETS DO IIITT!!!'"
+- yarn lintfix
+- yarn build
+before-deploy: "echo 'deploying new version'"
 deploy:
   provider: npm
-  email: "pablohpsilva@gmail.com"
-  api_key: "5e15eb4f-4635-4fdb-acd9-c1dd81a0c79a"
+  email: pablohpsilva@gmail.com
+  api_key:
+    secure: yCe/pJe5r9ot7S+03opWuaM9np0X/Pyzh7cLYjpOhgw/aqKw640r74+H+vVl8utY02mle4Pg8Aqt0KK30P10qFpR1dZRjfDasnU18ADX8xd83FZs0uyky0FgLmcJZwDJQ/Wperzu9jj5e0w05t5YTBDB6mMxtCkGeA77wzpxN//Bvn0DZ1O+o51Y83HI7gD+xTs9Q3wTemln6NhKZEwcpBLH6HKleqrOlO62fNOEqlpKxBP7xYj1Zkxvd6yQcivzFkNl9bwpGzBS/FuA0B7ZUtNTzKxmKWpjKWwXVP99/CTr4srKkCqG75OTgLwfH/F2dqdhDSgyaZxj9O5w/fJxf9eXVzRUk3fp/B8cATidj2e8Wjz4yKFmF0p8sp1M+DdHCb7VjIdBruvQ9mzJ2Uyj2uYlu5Y66JWrSqiqrXXBwSxiAL1jjJuKKArmYFIUfjq9iLl8kgq+vCjvJzf9ho0HvttO9RXMNg4EHqd9/kPiM6CkiThI0mHIUxQ+VaLksHa6AvWCKyRajR9pbe2MCqd8JVk0eF3TWkVWoPQBFLnegt1fRBU7XHQIKHpupj5Y0QB7bAMoSpkGq6H0TPMaHXz+Rf3knVFb++6SD3/NrI1O7APbYyMapj7WKXeaAiKAFZC54Pkq8XEzrFVzgmr1ynH3QNMKfh8UiAgO+/nNrj0yrIs=
   on:
     tags: true
-    branch: master
-branches:
-  only:
-    - master
-    - release*
+    repo: SoftboxLab/moo-cli
