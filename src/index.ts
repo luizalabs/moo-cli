@@ -17,11 +17,14 @@ function getFramework(options: any) {
 
 cli
   .version(pack.version)
-
   .option('--hi, --hello', 'Say hello')
   .option('-s, --say [type]', 'Say what you want')
   .option('-m, --menu', 'Open menu')
-  // .option('-n, --name <name>', 'name for lib or web-component mode (default: Cow)', 'Cow')
+  .parse(process.argv);
+
+cli
+  .command('build <name>')
+  .description('build a .js or .vue file in production mode with zero config')
   .option('-d, --dest [dir]', 'output directory (default: src/components)', './src/components')
   .option('-r, --react', 'build something for react')
   .option('-v, --vue', 'build something for vue')
@@ -30,11 +33,6 @@ cli
   .option('-a, --airbnb', 'set airbnb flag')
   .option('-f, --functional', 'create functional stuff (if it can...)')
   .option('-t, --test', 'set test flag (this will build some tests for ya (if it can...))')
-  .parse(process.argv)
-
-  .command('build <name>')
-  .description('build a .js or .vue file in production mode with zero config')
-
   .action((name, cmd) => {
     const args = cleanArgs(cmd);
     require('./commands/build').default(getFramework(args), Object.assign({}, { name }, args));

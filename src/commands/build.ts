@@ -1,11 +1,12 @@
 import * as Mustache from 'mustache';
-// import { pathInSrc } from '../utils/default-path'
-import reactComp from '../templates/react/comp.js';
-import reactFuncComp from '../templates/react/func.js';
-import reactTest from '../templates/react/test.js';
+import { isFileOnCurrentDirectory } from '../utils/default-path';
 import writeFile from '../utils/write-file';
+import getReactTemplate from './react-template';
+import getVueTemplate from './vue-template';
 
-// const TEMPLATE_PATH = pathInSrc('templates');
+const isOnRootPath = () => (
+  isFileOnCurrentDirectory('package.json')
+);
 
 const getFileExtension = ({ vue }: { vue: boolean }) => {
   return vue
@@ -15,38 +16,52 @@ const getFileExtension = ({ vue }: { vue: boolean }) => {
 
 const getTemplate = (framework: string, type: string) => {
   if (framework === 'react') {
-    return type === 'comp'
-      ? reactComp
-      : reactComp === 'test'
-        ? reactFuncComp
-        : reactTest;
+    return getReactTemplate(type);
+  }
+
+  if (framework === 'vue') {
+    return getVueTemplate(type);
   }
 
   throw new Error('could not find path');
 };
 
-// const getTemplate = (templatePath: string, framework: string, type: string, append: string = '') => {
-//   return require(`${templatePath}/${framework}/${type}${append}`).default;
-// };
+const isValidBuild = (dest: string, name: string) => {
+  if (!dest || !name) {
+    console.log('Could not create amazing stuff due to some arguments missing: either name or dest');
+    return false;
+  }
+
+  if (!isOnRootPath()) {
+    console.log('Sorry! Run moo-cli on your root directoy (same place where you can find the `package.json` file)');
+    return false;
+  }
+
+  return true;
+};
+
+const createComponentFile = (framework: string, type: string, name: string, dest: string, options: any) => {
+  const fileTemplate = Mustache.render(getTemplate(framework, type), options);
+  writeFile(fileTemplate, name, getFileExtension(options), dest);
+};
+
+const createTestFile = (framework: string, name: string, dest: string, options: any) => {
+  const testTemplate = Mustache.render(getTemplate(framework, 'test'), options);
+  writeFile(testTemplate, name, 'test.js', dest);
+};
 
 export default async (framework: string, options: any) => {
   const { name, test, dest, functional } = options;
-  if (!dest || !name) {
-    console.log('Could not create amazing stuff due to some arguments missing: either name or dest');
-    return;
-  }
 
-  const type = functional
-    ? 'func'
-    : 'comp';
+  if (isValidBuild(dest, name)) {
+    const type = functional
+      ? 'func'
+      : 'comp';
 
-  // const fileTemplate = Mustache.render(getTemplate(TEMPLATE_PATH, framework, type), options);
-  const fileTemplate = Mustache.render(getTemplate(framework, type), options);
-  writeFile(fileTemplate, name, getFileExtension(options), dest);
+    createComponentFile(framework, type, name, dest, options);
 
-  if (test) {
-    // const testTemplate = Mustache.render(getTemplate(TEMPLATE_PATH, framework, 'test'), options);
-    const testTemplate = Mustache.render(getTemplate(framework, 'test'), options);
-    writeFile(testTemplate, name, 'test.js', dest);
+    if (test) {
+      createTestFile(framework, name, dest, options);
+    }
   }
 };

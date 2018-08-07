@@ -22,16 +22,12 @@ export default `<template>
     },
     computed: {
       {{#flux}}...mapGetters([
-        // ...
-      ]){{#airbnb}},{{/airbnb}}{{/flux}}
-      {{^flux}}// ...{{/flux}}
+      ]){{#airbnb}},{{/airbnb}}{{/flux}}{{^flux}}// ...{{/flux}}
     },
     methods: {
       {{#flux}}...mapActions({
-        // ...
-      }){{#airbnb}},{{/airbnb}}{{/flux}}
-      {{^flux}}// ...{{/flux}}
+      }){{#airbnb}},{{/airbnb}}{{/flux}}{{^flux}}// ...{{/flux}}
     }{{#airbnb}},{{/airbnb}}
   }{{#airbnb}};{{/airbnb}}
 </script>`
-.trim()
+.trim();

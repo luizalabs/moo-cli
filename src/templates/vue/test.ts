@@ -7,4 +7,4 @@ describe('{{name}}.vue', () => {
     expect(wrapper.contains('div')).toBe(true)
   })
 })`
-.trim()
+.trim();

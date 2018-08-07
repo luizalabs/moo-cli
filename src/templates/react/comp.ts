@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'{{#airbnb}};{{/airbnb}}
 
 {{#flux}}function mapStateToProps(state) {
   return {
-  };
+  }{{#airbnb}};{{/airbnb}}
 }{{/flux}}
 
 class {{name}} extends Component {
