@@ -14,9 +14,9 @@ script:
   - yarn lintfix
   # - yarn coverage
   - yarn build
-  - npm version patch
-  - git push
-  - git push --tags
+  # - npm version patch
+  # - git push
+  # - git push --tags
 branches:
   only:
     - master
