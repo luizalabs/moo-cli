@@ -33,5 +33,8 @@ deploy:
   on:
     tags: true
     repo: SoftboxLab/moo-cli
-    branch: release*
+    branch:
+      only:
+        - master
+        - release*
 
