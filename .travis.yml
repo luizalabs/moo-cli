@@ -1,16 +1,24 @@
 language: node_js
-cache:
-  directories:
-    - ~/.npm
-notifications:
-  email: false
 node_js:
-  - '10'
-  - '9'
-  - '8'
-  - '6'
-after_success:
-  - npm run travis-deploy-once "npm run semantic-release"
+  - '9.10.0'
+sudo: false
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s
+  - export PATH="$HOME/.yarn/bin:$PATH"
+  - yarn -v
+  - npm i -g npm
+install:
+  - yarn add --dev --ignore-scripts babel-cli
+  - yarn --ignore-scripts
+script:
+  - yarn lintfix
+  # - yarn coverage
+  - yarn build
+  - npm version patch
+  - git push
+  - git push --tags
 branches:
-  except:
-    - /^v\d+\.\d+\.\d+$/
+  only:
+    - master
+    - feature/travis
+    - release*
