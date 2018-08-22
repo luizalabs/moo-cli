@@ -13,26 +13,10 @@ install:
 script:
   - yarn lintfix
   - yarn build
-after_install:
-  - echo "cleaning files"
-  - rm -rf src
-  - rm -rf node_modules
-  - rm -rf config
-  - rm -rf jest.config.js
-  - rm -rf package-* yarn.*
-  - rm -rf ts*
 branch:
   only:
     - master
     - release*
-before_deploy:
-  - echo "Preparing deploy..."
-  - rm -rf src
-  - rm -rf node_modules
-  - rm -rf config
-  - rm -rf jest.config.js
-  - rm -rf package-* yarn.*
-  - rm -rf ts*
 deploy:
   skip_cleanup: true
   provider: npm

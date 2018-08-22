@@ -1,10 +1,9 @@
 export interface ICommandOptions {
-  dest: boolean;
-  react: boolean;
-  vue: boolean;
-  angular: boolean;
-  flux: boolean;
-  airbnb: boolean;
-  functional: boolean;
-  test: boolean;
+  dest: string;
+  react?: boolean;
+  vue?: boolean;
+  flux?: boolean;
+  airbnb?: boolean;
+  func?: boolean;
+  test?: boolean;
 }
