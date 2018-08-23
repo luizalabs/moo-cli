@@ -1,64 +1,57 @@
 #!/usr/bin/env node
 
 import cli from 'commander';
-import cowsay from 'cowsay';
-import pack from '../package.json';
-import menu from './menu';
-import cleanArgs from './utils/clean';
+import cow from 'cowsay';
 
-// function getFramework({ angular, vue }: { angular: boolean, vue: boolean }) {
-function getFramework(options: any) {
-  return options.angular
-    ? 'angular'
-    : options.vue
-      ? 'vue'
-      : 'react';
-}
+import pack from '../package.json';
+import comp from './commands/comp';
+import menu from './menu';
 
 cli
   .version(pack.version)
-  .option('--hi, --hello', 'Say hello')
-  .option('-s, --say [type]', 'Say what you want')
-  .option('-m, --menu', 'Open menu')
-  .parse(process.argv);
+  .description(pack.description);
 
 cli
-  .command('build <name>')
-  .description('build a .js or .vue file in production mode with zero config')
-  .option('-d, --dest [dir]', 'output directory (default: src/components)', './src/components')
-  .option('-r, --react', 'build something for react')
-  .option('-v, --vue', 'build something for vue')
-  .option('-n, --angular', 'build something for angular')
-  .option('-x, --flux', 'set redux flag')
-  .option('-a, --airbnb', 'set airbnb flag')
-  .option('-f, --functional', 'create functional stuff (if it can...)')
-  .option('-t, --test', 'set test flag (this will build some tests for ya (if it can...))')
-  .action((name, cmd) => {
-    const args = cleanArgs(cmd);
-    require('./commands/build').default(getFramework(args), Object.assign({}, { name }, args));
+  .command('hello')
+  .description('Hello from moo-cli')
+  .action(() => {
+    console.log(
+      '\n',
+      cow.say({
+        text: 'Hello! I am a MOOvelous CLI.',
+      }),
+      '\n',
+    );
   });
 
-if (cli.hello) {
-  console.log(
-    cowsay.say({
-      text: 'Hello! I am a MOOvelous CLI.',
-    }),
-  );
-}
+cli
+  .command('comp <name>')
+  .description('Generate standardized code for your project')
+  .option('-d, --dest [dir]', 'output directory', './src/components')
+  .option('-v, --vue', 'build something for vue')
+  .option('-r, --react', 'build something for react')
+  .option('-x, --flux', 'set vuex/redux flag')
+  .option('-a, --airbnb', 'set airbnb flag')
+  .option('-f, --func', 'create functional stuff (if it can...)')
+  .option('-t, --test', 'create test scripts (if it can...)')
+  .action(comp);
 
-if (cli.say) {
-  console.log(
-    cowsay.say({
-      text: cli.say,
-    }),
-  );
-}
+cli
+  .command('menu')
+  .description('Open interactive menu')
+  .action(menu);
 
-if (cli.menu) {
-  menu();
-}
+cli.on('--help', () => {
+  console.log(
+    '\n',
+    'Type:',
+    '"moo [command] -h"',
+    'to ask help about specific command',
+    '\n',
+  );
+});
 
 cli.parse(process.argv);
-if (!process.argv.slice(2).length) {
-  cli.outputHelp();
+if (!cli.args.length) {
+  cli.help();
 }

@@ -28,4 +28,4 @@ class {{name}} extends Component {
 {{#flux}}export default connect(
   mapStateToProps{{#airbnb}},{{/airbnb}}
 )({{name}}){{#airbnb}};{{/airbnb}}{{/flux}}
-`.trim();
+`;

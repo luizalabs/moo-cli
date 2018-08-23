@@ -1,10 +1,14 @@
 export default `import { shallowMount } from '@vue/test-utils'
-import {{name}} from '../{{name}}.vue'
+import {{name}} from './index.vue'
 
 describe('{{name}}.vue', () => {
-  it('renders li for each item in props.items', () => {
-    const wrapper = shallowMount({{name}})
-    expect(wrapper.contains('div')).toBe(true)
+  const wrapper = shallowMount({{name}})
+
+  it('should render properly', () => {
+    expect(wrapper).toBeDefined()
+    expect(wrapper.is('div')).toBe(true)
+    expect(wrapper.classes().includes('{{name}}')).toBe(true)
+    expect(wrapper.text()).toBe('{{name}} component by moo-cli')
   })
-})`
-.trim();
+})
+`;

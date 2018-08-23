@@ -4,7 +4,7 @@ import motivation from 'motivation';
 
 const questions = [{
   choices: [{
-    name: 'Friend',
+    name: 'A friend',
     value: 'friend',
   }, {
     name: 'Motivation',
@@ -13,7 +13,7 @@ const questions = [{
     name: 'Know more',
     value: 'more',
   }],
-  message: 'What do you need?',
+  message: 'What do you need today?',
   name: 'opt',
   type: 'list',
 }];
@@ -27,7 +27,7 @@ export default function menu() {
         case 'friend':
           console.log(
             cowsay.say({
-              text: 'Hello! I am a MOOvelous CLI and your new friend. 😊',
+              text: 'I am here! Now we are MOOvelous best friends forever. 😊',
             }),
           );
           break;
