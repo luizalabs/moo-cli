@@ -14,4 +14,4 @@ const {{name}} = () => (
 }{{#airbnb}};{{/airbnb}}
 
 export default {{name}}{{#airbnb}};{{/airbnb}}
-`.trim();
+`;
