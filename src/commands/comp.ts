@@ -8,7 +8,7 @@ import { write } from '../utils/files';
 import options from '../utils/options';
 import { isRootPath } from '../utils/validations';
 
-export default function make(name: string, cmd: any) {
+export default function comp(name: string, cmd: any) {
   if (isRootPath()) {
     const opts = options(cmd);
     const { dest, func, test } = opts;
@@ -18,14 +18,15 @@ export default function make(name: string, cmd: any) {
     const ext = opts.react ? 'jsx' : 'vue';
     const dir = join(process.cwd(), dest);
 
+    const data = { name, ...opts };
     const template = getTemplate(framework, type);
-    const code = Mustache.render(template, options);
+    const code = Mustache.render(template, data);
 
     write(code, name, ext, dir);
 
     if (test) {
       const tpltest = getTemplate(framework, 'test');
-      const spec = Mustache.render(tpltest, options);
+      const spec = Mustache.render(tpltest, data);
       write(spec, name, 'js', dir, 'index.test');
     }
 

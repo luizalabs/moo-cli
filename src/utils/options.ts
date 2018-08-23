@@ -1,4 +1,12 @@
-import { ICommandOptions } from '../interfaces/command-options';
+export interface ICommandOptions {
+  dest: string;
+  react?: boolean;
+  vue?: boolean;
+  flux?: boolean;
+  airbnb?: boolean;
+  func?: boolean;
+  test?: boolean;
+}
 
 export default function options(cmd: any): ICommandOptions {
   const opts = {

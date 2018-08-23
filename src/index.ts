@@ -4,7 +4,7 @@ import cli from 'commander';
 import cow from 'cowsay';
 
 import pack from '../package.json';
-import make from './commands/make';
+import comp from './commands/comp';
 import menu from './menu';
 
 cli
@@ -25,7 +25,7 @@ cli
   });
 
 cli
-  .command('make <name>')
+  .command('comp <name>')
   .description('Generate standardized code for your project')
   .option('-d, --dest [dir]', 'output directory', './src/components')
   .option('-v, --vue', 'build something for vue')
@@ -34,7 +34,7 @@ cli
   .option('-a, --airbnb', 'set airbnb flag')
   .option('-f, --func', 'create functional stuff (if it can...)')
   .option('-t, --test', 'create test scripts (if it can...)')
-  .action(make);
+  .action(comp);
 
 cli
   .command('menu')
