@@ -1,16 +1,14 @@
 language: node_js
 node_js:
-  - 9.10.0
+  - node
 sudo: false
-before_install:
-  - npm i -g npm
 install:
   - npm i
 script:
   - npm run build
 branch:
   only:
-    - master
+    - release/*
 deploy:
   skip_cleanup: true
   provider: npm
