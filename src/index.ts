@@ -4,6 +4,7 @@ import cli from 'commander';
 import cow from 'cowsay';
 
 import pack from '../package.json';
+import arch from './commands/arch';
 import comp from './commands/comp';
 import menu from './menu';
 
@@ -25,8 +26,13 @@ cli
   });
 
 cli
+  .command('arch')
+  .description('Generate standardized archtecture to start a new project')
+  .action(arch);
+
+cli
   .command('comp <name>')
-  .description('Generate standardized code for your project')
+  .description('Generate standardized component initial code')
   .option('-d, --dest [dir]', 'output directory', './src/components')
   .option('-v, --vue', 'build something for vue')
   .option('-r, --react', 'build something for react')
