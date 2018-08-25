@@ -1,0 +1,45 @@
+{
+  "presets": {
+    "js-stylus-jest-pwa": {
+      "useConfigFiles": false,
+      "plugins": {
+        "@vue/cli-plugin-babel": {},
+        "@vue/cli-plugin-pwa": {},
+        "@vue/cli-plugin-eslint": {
+          "config": "standard",
+          "lintOn": [
+            "save",
+            "commit"
+          ]
+        },
+        "@vue/cli-plugin-unit-jest": {}
+      },
+      "router": true,
+      "routerHistoryMode": true,
+      "vuex": true,
+      "cssPreprocessor": "stylus"
+    },
+    "ts-stylus-jest-pwa": {
+      "useConfigFiles": false,
+      "plugins": {
+        "@vue/cli-plugin-babel": {},
+        "@vue/cli-plugin-typescript": {
+          "classComponent": false,
+          "tsLint": true,
+          "lintOn": [
+            "save",
+            "commit"
+          ],
+          "useTsWithBabel": true
+        },
+        "@vue/cli-plugin-pwa": {},
+        "@vue/cli-plugin-unit-jest": {}
+      },
+      "router": true,
+      "routerHistoryMode": true,
+      "vuex": true,
+      "cssPreprocessor": "stylus"
+    }
+  },
+  "useTaobaoRegistry": false
+}
