@@ -1,17 +1,13 @@
-export default `import React, { Component } from 'react'{{#airbnb}};{{/airbnb}}
-import PropTypes from 'prop-types'{{#airbnb}};{{/airbnb}}
+export default `import {{#typescript}}* as {{/typescript}}React from 'react'{{#airbnb}};{{/airbnb}}
 
-const {{name}} = () => (
+{{#typescript}}interface I{{name}} {}{{/typescript}}
+
+const {{name}} = ({{#typescript}}props: I{{name}}{{/typescript}}) => (
   <div
     className={{{name}}}>
+    I{{name}} was created
   </div>
 ){{#airbnb}};{{/airbnb}}
-
-{{name}}.defaultProps = {
-}{{#airbnb}};{{/airbnb}}
-
-{{name}}.propTypes = {
-}{{#airbnb}};{{/airbnb}}
 
 export default {{name}}{{#airbnb}};{{/airbnb}}
 `;
