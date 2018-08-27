@@ -6,6 +6,7 @@ import reactTemplate from '../templates/react';
 import vueTemplate from '../templates/vue';
 import { write } from '../utils/files';
 import options from '../utils/options';
+import { ICommandOptions } from '../utils/options';
 import { isRootPath } from '../utils/validations';
 
 export default function comp(name: string, cmd: any) {
@@ -15,7 +16,7 @@ export default function comp(name: string, cmd: any) {
 
     const framework = opts.react ? 'react' : 'vue';
     const type = func ? 'func' : 'comp';
-    const ext = opts.react ? 'jsx' : 'vue';
+    const ext = getComponentExtension(opts);
     const ts = Boolean(opts.typescript);
     const dir = join(process.cwd(), dest);
 
@@ -43,6 +44,12 @@ export default function comp(name: string, cmd: any) {
 }
 
 // helpers
+function getComponentExtension({ react, typescript }: ICommandOptions) {
+  return !react
+    ? 'vue'
+    : `${typescript ? 'ts' : 'js'}x`;
+}
+
 function getTemplate(framework: string, type: string, typescript: boolean) {
   if (framework === 'react') {
     return reactTemplate(type, typescript);

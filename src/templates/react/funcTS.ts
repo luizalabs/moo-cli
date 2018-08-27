@@ -1,6 +1,8 @@
-export default `import React from 'react'{{#airbnb}};{{/airbnb}}
+export default `import * as React from 'react'{{#airbnb}};{{/airbnb}}
 
-const {{name}} = () => (
+interface I{{name}} {}
+
+const {{name}} = (props: I{{name}}) => (
   <div
     className={{{name}}}>
     I{{name}} was created

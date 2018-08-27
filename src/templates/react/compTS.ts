@@ -8,7 +8,7 @@ interface I{{name}} {}
   }{{#airbnb}};{{/airbnb}}
 }{{/flux}}
 
-class {{name}} extends Component<I{{name}}, {}> {
+class {{name}} extends React.Component<I{{name}}, {}> {
   public static defaultProps = {}
 
   constructor (props: I{{name}}) {
