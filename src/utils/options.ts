@@ -6,6 +6,7 @@ export interface ICommandOptions {
   airbnb?: boolean;
   func?: boolean;
   test?: boolean;
+  typescript?: boolean;
 }
 
 export default function options(cmd: any): ICommandOptions {
