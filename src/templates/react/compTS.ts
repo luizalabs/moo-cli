@@ -1,13 +1,15 @@
 export default `import * as React from 'react'{{#airbnb}};{{/airbnb}}
-{{#flux}}import { connect } from 'react-redux'{{#airbnb}};{{/airbnb}}{{/flux}}
+{{#flux}}import { connect } from 'react-redux'{{#airbnb}};{{/airbnb}}
 
+{{/flux}}
 interface I{{name}} {}
 
 {{#flux}}function mapStateToProps(state) {
   return {
   }{{#airbnb}};{{/airbnb}}
-}{{/flux}}
+}
 
+{{/flux}}
 class {{name}} extends React.Component<I{{name}}, {}> {
   public static defaultProps = {}
 
