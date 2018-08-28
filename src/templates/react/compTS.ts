@@ -21,7 +21,7 @@ class {{name}} extends React.Component<I{{name}}, {}> {
     return (
       <div
         className="{{name}}">
-        I{{name}} was created!
+        {{name}} was created!
       </div>
     ){{#airbnb}};{{/airbnb}}
   }
