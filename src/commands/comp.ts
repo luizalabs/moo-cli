@@ -54,5 +54,5 @@ function getTemplate(framework: string, type: string, typescript: boolean) {
   if (framework === 'react') {
     return reactTemplate(type, typescript);
   }
-  return vueTemplate(type);
+  return vueTemplate(type, typescript);
 }
