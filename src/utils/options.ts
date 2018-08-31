@@ -1,4 +1,5 @@
 export interface ICommandOptions {
+  clean?: boolean;
   dest: string;
   react?: boolean;
   vue?: boolean;
