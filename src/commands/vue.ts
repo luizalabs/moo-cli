@@ -13,7 +13,7 @@ export default function vue(dir: string, pre: string) {
   const preset = JSON.stringify(presets[pre]);
   const task = spawn(
     'npx',
-    ['@vue/cli', 'create', dir, '-i', `'${preset}'`],
+    ['-p', '@vue/cli', 'vue', 'create', dir, '-i', `'${preset}'`],
     {
       cwd: process.cwd(),
       shell: true,
@@ -32,6 +32,6 @@ export default function vue(dir: string, pre: string) {
   });
 
   task.on('close', (code) => {
-    return !code || console.log('Exit with code:', code);
+    return code && console.log('Exit with code:', code);
   });
 }
