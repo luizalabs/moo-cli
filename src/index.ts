@@ -40,7 +40,7 @@ cli
   .option('-a, --airbnb', 'set airbnb flag')
   .option('-f, --func', 'create functional stuff (if it can...)')
   .option('-t, --test', 'create test scripts (if it can...)')
-  .option('--typescript', 'create in typescript (if it can...)')
+  .option('--ts', 'create in typescript (if it can...)')
   .option('--clean', 'create a clean component (if it can...)')
   .action(comp);
 

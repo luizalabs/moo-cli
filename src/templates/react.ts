@@ -5,15 +5,15 @@ import reactTSFuncComp from './react/funcTS.js';
 import reactTest from './react/test.js';
 import reactTSTest from './react/testTS.js';
 
-export default function reactTemplate(type: string, typescript: boolean = false) {
+export default function reactTemplate(type: string, ts: boolean = false) {
   switch (type) {
     case 'test':
-      return typescript ? reactTSTest : reactTest;
+      return ts ? reactTSTest : reactTest;
 
     case 'func':
-      return typescript ? reactTSFuncComp : reactFuncComp;
+      return ts ? reactTSFuncComp : reactFuncComp;
 
     default:
-      return typescript ? reactTSComp : reactComp;
+      return ts ? reactTSComp : reactComp;
   }
 }

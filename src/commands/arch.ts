@@ -1,8 +1,8 @@
 import inquirer, { Answers, Questions } from 'inquirer';
-import vuePresets from '../../assets/vue-presets.json';
+import vuePresets from '../templates/vue/presets';
 import vue from './vue';
 
-const presets = Object.keys(vuePresets.presets);
+const vueNames = Object.keys(vuePresets);
 
 const questions: Questions = [{
   choices: [{
@@ -16,18 +16,18 @@ const questions: Questions = [{
   name: 'opt',
   type: 'list',
 }, {
-  choices: presets.map((value) => {
-    return { name: value, value };
+  choices: vueNames.map((value) => {
+    return { value, name: value };
   }),
   message: 'Choose a preset:',
   name: 'vue',
   type: 'list',
-  when: (resp) => resp.opt === 'vue',
+  when: (resp: Answers) => resp.opt === 'vue',
 }, {
-  default: 'moo-cli-arch',
+  default: (resp: Answers) => `moo-cli-${resp.opt}`,
   message: 'Type a directory name to create:',
   name: 'dir',
-  when: (resp) => resp.opt === 'vue',
+  when: (resp: Answers) => resp.opt === 'vue',
 }];
 
 export default function arch() {
@@ -36,7 +36,11 @@ export default function arch() {
   inquirer.prompt(questions)
     .then((resp: Answers) => {
       if (resp.opt === 'react') {
-        return console.log('\n', 'React templates will coming soon.', '\n');
+        return console.log(
+          '\n',
+          'React templates will coming soon.',
+          '\n',
+        );
       }
 
       if (resp.opt === 'vue') {

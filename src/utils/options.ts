@@ -1,13 +1,13 @@
 export interface ICommandOptions {
-  clean?: boolean;
   dest: string;
+  clean?: boolean;
   react?: boolean;
   vue?: boolean;
   flux?: boolean;
   airbnb?: boolean;
   func?: boolean;
   test?: boolean;
-  typescript?: boolean;
+  ts?: boolean;
 }
 
 export default function options(cmd: any): ICommandOptions {
