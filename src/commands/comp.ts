@@ -14,22 +14,30 @@ export default function comp(name: string, cmd: any) {
     const opts = options(cmd);
     const { dest, func, test } = opts;
 
-    const framework = opts.react ? 'react' : 'vue';
+    const framework = opts.react ? 'react' : opts.vue ? 'vue' : '';
+
+    if (!framework) {
+      console.log(
+        '\n',
+        'Framework option is required',
+        '\n',
+      );
+      process.exit();
+    }
+
     const type = func ? 'func' : 'comp';
-    const ext = getComponentExtension(opts);
-    const ts = Boolean(opts.typescript);
+    const ext = getExtension(opts);
     const dir = join(process.cwd(), dest);
 
     const data = { name, ...opts };
-    const template = getTemplate(framework, type, ts);
+    const template = getTemplate(framework, type, opts.ts);
     const code = Mustache.render(template, data);
-
     write(code, name, ext, dir);
 
     if (test) {
-      const tpltest = getTemplate(framework, 'test', ts);
+      const tpltest = getTemplate(framework, 'test', opts.ts);
       const spec = Mustache.render(tpltest, data);
-      const testExt = ts ? 'ts' : 'js';
+      const testExt = opts.ts ? 'ts' : 'js';
       write(spec, name, testExt, dir, 'index.test');
     }
 
@@ -44,15 +52,13 @@ export default function comp(name: string, cmd: any) {
 }
 
 // helpers
-function getComponentExtension({ react, typescript }: ICommandOptions) {
-  return !react
-    ? 'vue'
-    : `${typescript ? 'ts' : 'js'}x`;
+function getExtension({ react, ts }: ICommandOptions) {
+  return react ? `${ts ? 't' : 'j'}sx` : 'vue';
 }
 
-function getTemplate(framework: string, type: string, typescript: boolean) {
+function getTemplate(framework: string, type: string, ts?: boolean) {
   if (framework === 'react') {
-    return reactTemplate(type, typescript);
+    return reactTemplate(type, ts);
   }
-  return vueTemplate(type);
+  return vueTemplate(type, ts);
 }
