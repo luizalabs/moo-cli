@@ -1,16 +1,32 @@
 export default `import * as React from 'react'{{#airbnb}};{{/airbnb}}
-{{#flux}}import { connect } from 'react-redux'{{#airbnb}};{{/airbnb}}{{/flux}}
+{{#flux}}
+import { connect } from 'react-redux'{{#airbnb}};{{/airbnb}}
+{{/flux}}
+{{^clean}}
 
-interface I{{name}} {}
+interface I{{name}} {}{{#airbnb}};{{/airbnb}}
+{{/clean}}
+{{^clean}}
 
-{{#flux}}function mapStateToProps(state) {
+interface {{name}}State {}{{#airbnb}};{{/airbnb}}
+{{/clean}}
+
+{{#flux}}
+function mapStateToProps(state) {
   return {
   }{{#airbnb}};{{/airbnb}}
-}{{/flux}}
+}
 
-class {{name}} extends React.Component<I{{name}}, {}> {
-  public static defaultProps = {}
+{{/flux}}
+class {{name}} extends React.Component<I{{name}}, {{^clean}}{{name}}State{{/clean}}{{#clean}}{}{{/clean}}> {
+  {{^clean}}
+  public static defaultProps = {}{{#airbnb}};{{/airbnb}}
+  {{/clean}}
 
+  {{^clean}}
+  public state = {}{{#airbnb}};{{/airbnb}}
+
+  {{/clean}}
   constructor (props: I{{name}}) {
     super(props)
   }
@@ -19,7 +35,7 @@ class {{name}} extends React.Component<I{{name}}, {}> {
     return (
       <div
         className="{{name}}">
-        I{{name}} was created!
+        {{name}} was created!
       </div>
     ){{#airbnb}};{{/airbnb}}
   }

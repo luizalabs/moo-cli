@@ -1,7 +1,5 @@
 import { spawn } from 'child_process';
-import vuePresets from '../../assets/vue-presets.json';
-
-const { presets } = vuePresets;
+import presets from '../templates/vue/presets';
 
 export default function vue(dir: string, pre: string) {
   console.log(
