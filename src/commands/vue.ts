@@ -1,17 +1,19 @@
 import { spawn } from 'child_process';
+import jsDefDeps from '../templates/vue/js-def-deps';
 import presets from '../templates/vue/presets';
+import { log, style } from '../utils/console';
 
 export default function vue(dir: string, pre: string) {
-  console.log(
-    '\n',
-    'Preparing project archtecture...',
-    '\n',
+  log(
+    'Building project architecture...',
+    style.Bright,
+    style.Red,
   );
 
   const preset = JSON.stringify(presets[pre]);
   const task = spawn(
-    'npx',
-    ['-p', '@vue/cli', 'vue', 'create', dir, '-i', `'${preset}'`],
+    `npx rimraf ${dir} && npx -p @vue/cli`,
+    ['vue', 'create', dir, '-i', `'${preset}'`],
     {
       cwd: process.cwd(),
       shell: true,
@@ -30,6 +32,10 @@ export default function vue(dir: string, pre: string) {
   });
 
   task.on('close', (code) => {
-    return code && console.log('Exit with code:', code);
+    if (code) {
+      return console.log('Exit with code:', code);
+    }
+
+    return pre.startsWith('js-') ? jsDefDeps(dir) : console.log(dir);
   });
 }
