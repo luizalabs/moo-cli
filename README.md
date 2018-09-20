@@ -8,7 +8,7 @@ Its purpose is to standardize creation of new projects, components and resources
 
 ### Online
 
-`npx @softboxlab/moo-cli [command] [options]`
+`npx -p @softboxlab/moo-cli moo [command] [options]`
 
 ### Local
 
