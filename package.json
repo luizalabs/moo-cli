@@ -69,6 +69,7 @@
     "inquirer": "^6.0.0",
     "mkdirp": "^0.5.1",
     "motivation": "^1.0.3",
-    "mustache": "^2.3.0"
+    "mustache": "^2.3.0",
+    "rimraf": "^2.6.2"
   }
 }
