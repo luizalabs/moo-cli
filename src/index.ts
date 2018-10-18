@@ -6,6 +6,7 @@ import cow from 'cowsay';
 import pack from '../package.json';
 import arch from './commands/arch';
 import comp from './commands/comp';
+import flux from './commands/flux';
 import menu from './menu';
 
 cli
@@ -43,6 +44,15 @@ cli
   .option('--ts', 'create in typescript (if it can...)')
   .option('--clean', 'create a clean component (if it can...)')
   .action(comp);
+
+cli
+  .command('flux <name> <actiondir> <reducerdir>')
+  .description('Generate standardized flux initial code')
+  .option('-v, --vue', 'build something for vue')
+  .option('-r, --react', 'build something for react')
+  .option('-a, --airbnb', 'set airbnb flag')
+  .option('--ts', 'create in typescript (if it can...)')
+  .action(flux);
 
 cli
   .command('menu')
