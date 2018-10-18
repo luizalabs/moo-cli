@@ -1,9 +1,9 @@
-import reactComp from './react/comp.js';
-import reactTSComp from './react/compTS.js';
-import reactFuncComp from './react/func.js';
-import reactTSFuncComp from './react/funcTS.js';
-import reactTest from './react/test.js';
-import reactTSTest from './react/testTS.js';
+import reactComp from './react/components/comp.js';
+import reactTSComp from './react/components/compTS.js';
+import reactFuncComp from './react/components/func.js';
+import reactTSFuncComp from './react/components/funcTS.js';
+import reactTest from './react/components/test.js';
+import reactTSTest from './react/components/testTS.js';
 
 export default function reactTemplate(type: string, ts: boolean = false) {
   switch (type) {
