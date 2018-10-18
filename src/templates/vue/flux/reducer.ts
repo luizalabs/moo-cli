@@ -1,4 +1,4 @@
-export default `import { {{name}}Types } from '{{path}}/{{name}}Action'{{#airbnb}};{{/airbnb}}
+export default `import { {{name}}Types } from '../actions/{{name}}'{{#airbnb}};{{/airbnb}}
 
 export const {{name}}Mutation = {
   [{{name}}Types.ACTION](state, payload) {
@@ -7,4 +7,4 @@ export const {{name}}Mutation = {
 }{{#airbnb}};{{/airbnb}}
 
 export default {{name}}Mutation{{#airbnb}};{{/airbnb}}
-`
+`;

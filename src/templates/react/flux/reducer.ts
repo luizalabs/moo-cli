@@ -1,4 +1,4 @@
-export default `import { {{name}}Types } from '{{path}}/{{name}}Actions'{{#airbnb}};{{/airbnb}}
+export default `import { {{name}}Types } from '../actions/{{name}}'{{#airbnb}};{{/airbnb}}
 
 const {{name}}State = {}
 
@@ -10,4 +10,4 @@ export default (state = {{name}}State, action) => {
       return Object.assign(state, { greeting: 'bye' }){{#airbnb}};{{/airbnb}}
   }{{#airbnb}};{{/airbnb}}
 }
-`
+`;

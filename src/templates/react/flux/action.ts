@@ -5,4 +5,4 @@ export default `export const {{name}}Types = {
 export const {{name}}Action = () => ({
   type: {{name}}Types.ACTION{{#airbnb}},{{/airbnb}}
 }){{#airbnb}};{{/airbnb}}
-`
+`;

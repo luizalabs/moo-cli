@@ -1,4 +1,4 @@
-export default `import { {{name}}Types, I{{name}}Action } from '{{path}}/{{name}}Types'{{#airbnb}};{{/airbnb}}
+export default `import { {{name}}Types, I{{name}}Action } from '../actions/{{name}}'{{#airbnb}};{{/airbnb}}
 
 interface I{{name}}State {}{{#airbnb}};{{/airbnb}}
 
@@ -12,4 +12,4 @@ export default (state = {{name}}State, action: I{{name}}Action) => {
       return Object.assign(state, { greeting: 'bye' }){{#airbnb}};{{/airbnb}}
   }{{#airbnb}};{{/airbnb}}
 }{{#airbnb}};{{/airbnb}}
-`
+`;

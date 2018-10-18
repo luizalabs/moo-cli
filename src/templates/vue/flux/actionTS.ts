@@ -5,4 +5,4 @@ export default `export enum {{name}}Types = {
 export const {{name}}Action = ({ commit }, payload) => ({
   return commit({{name}}Types.ACTION, payload){{#airbnb}};{{/airbnb}}
 }){{#airbnb}};{{/airbnb}}
-`
+`;
