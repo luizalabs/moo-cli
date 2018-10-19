@@ -11,7 +11,8 @@ export function write(
 ) {
   const path = join(dir, name);
   const file = `${fname}.${ext}`;
+  const result = join(path, file);
 
   mkdirp.sync(path);
-  writeFileSync(join(path, file), content);
+  writeFileSync(result, content);
 }
