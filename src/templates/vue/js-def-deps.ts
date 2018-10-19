@@ -14,10 +14,10 @@ export default function jsDefDeps(dir: string) {
   const task = spawn(
     'npm i -D',
     [
-      '@softboxlab/eslint-config-gandalf-lint',
       'eslint',
       'eslint-plugin-import',
       'eslint-plugin-sort-imports-es6-autofix',
+      '@softboxlab/eslint-config-gandalf-lint',
     ],
     {
       cwd,

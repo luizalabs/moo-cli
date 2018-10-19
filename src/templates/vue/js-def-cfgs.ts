@@ -9,16 +9,9 @@ export default function jsDefCfgs(dir: string) {
     style.Green,
   );
 
-  const pack = join(dir, 'package.json');
-  const json = readFileSync(pack, { encoding: 'utf8' });
-  const cfgs = JSON.parse(json);
-  const { eslintConfig } = cfgs;
-
-  cfgs.eslintConfig = eslint(eslintConfig);
-
-  const result = JSON.stringify(cfgs, null, 2);
-
-  writeFileSync(pack, result, { encoding: 'utf8' });
+  eslintTask(dir);
+  processMain(dir);
+  processHello(dir);
 
   log(
     'We started a new MOOvelous project!',
@@ -27,8 +20,21 @@ export default function jsDefCfgs(dir: string) {
   );
 }
 
-// Helpers
-function eslint(config: any) {
+// Eslint
+function eslintTask(dir: string) {
+  const pack = join(dir, 'package.json');
+  const json = readFileSync(pack, 'utf8');
+  const cfgs = JSON.parse(json);
+  const { eslintConfig } = cfgs;
+
+  cfgs.eslintConfig = eslintSettings(eslintConfig);
+
+  const result = JSON.stringify(cfgs, null, 2);
+
+  writeFileSync(pack, result, 'utf8');
+}
+
+function eslintSettings(config: any) {
   config.extends = [
     'plugin:vue/recommended',
     '@vue/standard',
@@ -66,4 +72,19 @@ function eslint(config: any) {
   };
 
   return config;
+}
+
+// Workarounds
+function processMain(dir: string) {
+  const file = join(dir, 'src', 'main.js');
+  const code = readFileSync(file, 'utf8');
+  const result = code.replace('h => h', 'create => create');
+  writeFileSync(file, result, 'utf8');
+}
+
+function processHello(dir: string) {
+  const file = join(dir, 'src', 'components', 'HelloWorld.vue');
+  const code = readFileSync(file, 'utf8');
+  const result = code.replace('msg: String', 'msg: { type: String, default: \'\' }');
+  writeFileSync(file, result, 'utf8');
 }

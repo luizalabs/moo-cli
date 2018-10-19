@@ -5,7 +5,7 @@ import { log, style } from '../utils/console';
 
 export default function vue(dir: string, pre: string) {
   log(
-    'Building project architecture...',
+    'Building Vue project architecture, please be patient...',
     style.Bright,
     style.Red,
   );
