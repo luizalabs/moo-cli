@@ -35,7 +35,7 @@ class {{name}} extends React.Component<I{{name}}, {{^clean}}{{name}}State{{/clea
     return (
       <div
         className="{{name}}">
-        {{name}} was created!
+        {{name}} component by moo-cli
       </div>
     ){{#airbnb}};{{/airbnb}}
   }
