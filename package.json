@@ -12,7 +12,7 @@
     "check": "tsc --noEmit",
     "lint": "tslint -p . -c tslint.json",
     "lintfix": "npm run lint -- --fix",
-    "build": "npm run check && npm run lintfix && npm run lint && tsc",
+    "build": "npm run check && npm run lintfix && tsc",
     "release:tags": "git push && git push --tags",
     "release:patch": "npm version patch && npm run release:tags",
     "release:minor": "npm version minor && npm run release:tags",

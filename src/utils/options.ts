@@ -19,7 +19,7 @@ export interface ICommandOptions extends ICommandDefaultOptions {
 }
 
 export function createCommandOptionsObject(cmd: any) {
-  return Array.prototype.reduce.call(cmd.options, (acc: any, curr: any) => {
+  return cmd.options.reduce((acc: any, curr: any) => {
     const key = curr.long.substr(2);
     return typeof cmd[key] !== 'function'
       ? Object.assign({}, acc, { [key]: cmd[key] })
