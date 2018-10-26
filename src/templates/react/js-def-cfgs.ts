@@ -1,6 +1,6 @@
-import { readFileSync, writeFileSync } from 'fs';
-import { join } from 'path';
+import cowsay from 'cowsay';
 import { log, style } from '../../utils/console';
+import { readJSON, writeJSON } from '../../utils/files';
 
 export default function jsDefCfgs(dir: string) {
   log(
@@ -9,51 +9,32 @@ export default function jsDefCfgs(dir: string) {
     style.Green,
   );
 
-  const pack = join(dir, 'package.json');
-  const json = readFileSync(pack, { encoding: 'utf8' });
-  const cfgs = JSON.parse(json);
-  const { eslintConfig } = cfgs;
+  eslintTask(dir);
+  // processMain(dir);
+  // processHello(dir);
 
-  cfgs.eslintConfig = eslint(eslintConfig);
-
-  const result = JSON.stringify(cfgs, null, 2);
-
-  writeFileSync(pack, result, { encoding: 'utf8' });
-
-  log(
-    'We started a new MOOvelous project!',
-    style.Bright,
-    style.Blue,
+  console.log(
+    cowsay.say({
+      text: 'We started a new MOOvelous project!',
+    }),
   );
 }
 
-// Helpers
-function eslint(config: any) {
+// Eslint
+function eslintTask(dir: string) {
+  const pack = readJSON(dir, 'package.json');
+  const { eslintConfig } = pack;
+
+  pack.eslintConfig = eslintSettings(eslintConfig);
+
+  writeJSON(pack, dir, 'package.json');
+}
+
+function eslintSettings(config: any) {
   config.extends = [
-    'plugin:vue/recommended',
-    '@vue/standard',
+    'react/app',
     '@softboxlab/gandalf-lint',
   ];
-
-  config.rules = {
-    'arrow-parens': ['error', 'as-needed'],
-    'import/order': [
-      'error',
-      {
-        groups: [
-          'builtin',
-          'external',
-          'internal',
-          'index',
-        ],
-      },
-    ],
-    'no-confusing-arrow': ['error', { allowParens: true }],
-    'no-underscore-dangle': 'off',
-    'sort-imports': 'off',
-    'sort-imports-es6-autofix/sort-imports-es6': 'off',
-    'sort-keys': 'off',
-  };
 
   config.overrides = {
     env: {
@@ -67,3 +48,18 @@ function eslint(config: any) {
 
   return config;
 }
+
+// // Workarounds
+// function processMain(dir: string) {
+//   const file = join(dir, 'src', 'main.js');
+//   const code = readFileSync(file, 'utf8');
+//   const result = code.replace('h => h', 'create => create');
+//   writeFileSync(file, result, 'utf8');
+// }
+
+// function processHello(dir: string) {
+//   const file = join(dir, 'src', 'components', 'HelloWorld.vue');
+//   const code = readFileSync(file, 'utf8');
+//   const result = code.replace('msg: String', 'msg: { type: String, default: \'\' }');
+//   writeFileSync(file, result, 'utf8');
+// }

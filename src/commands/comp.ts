@@ -4,7 +4,7 @@ import { join } from 'path';
 
 import reactTemplate from '../templates/react';
 import vueTemplate from '../templates/vue';
-import { write } from '../utils/files';
+import { writeCode } from '../utils/files';
 import options from '../utils/options';
 import { ICommandOptions } from '../utils/options';
 import { isRootPath } from '../utils/validations';
@@ -32,13 +32,13 @@ export default function comp(name: string, cmd: any) {
     const data = { name, ...opts };
     const template = getTemplate(framework, type, opts.ts);
     const code = Mustache.render(template, data);
-    write(code, name, ext, dir);
+    writeCode(code, name, ext, dir);
 
     if (test) {
       const tpltest = getTemplate(framework, 'test', opts.ts);
       const spec = Mustache.render(tpltest, data);
       const testExt = opts.ts ? 'ts' : 'js';
-      write(spec, name, testExt, dir, 'index.test');
+      writeCode(spec, name, testExt, dir, 'index.test');
     }
 
     console.log(

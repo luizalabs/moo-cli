@@ -1,7 +1,5 @@
 export default `<template>
-  <div
-    class="{{name}}"
-  >
+  <div class="{{name}}">
     {{name}} component by moo-cli
   </div>
 </template>

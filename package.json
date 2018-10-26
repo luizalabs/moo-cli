@@ -1,6 +1,6 @@
 {
   "name": "@softboxlab/moo-cli",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "A MOOvelous CLI",
   "main": "dist/index.js",
   "bin": {
@@ -12,7 +12,7 @@
     "check": "tsc --noEmit",
     "lint": "tslint -p . -c tslint.json",
     "lintfix": "npm run lint -- --fix",
-    "build": "npm run check && npm run lint && tsc",
+    "build": "npm run check && npm run lintfix && tsc",
     "release:tags": "git push && git push --tags",
     "release:patch": "npm version patch && npm run release:tags",
     "release:minor": "npm version minor && npm run release:tags",
@@ -64,10 +64,10 @@
     "@types/node": "^10.5.3",
     "@types/shelljs": "^0.8.0",
     "chalk": "^2.4.1",
-    "conventional-changelog": "^2.0.1",
-    "execa": "^0.10.0",
-    "husky": "^0.14.3",
-    "lint-staged": "^7.2.0",
+    "conventional-changelog": "^2.0.3",
+    "execa": "^1.0.0",
+    "husky": "^1.1.2",
+    "lint-staged": "^7.3.0",
     "tslint": "^5.11.0",
     "typescript": "^3.0.1"
   }

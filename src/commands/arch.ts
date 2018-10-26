@@ -1,7 +1,7 @@
 import inquirer, { Answers, Questions } from 'inquirer';
 import reactPresets from '../templates/react/presets';
 import vuePresets from '../templates/vue/presets';
-import build from '../utils/arch-builder';
+import cli from '../utils/cli';
 
 const vuePresetsNames = Object.keys(vuePresets);
 const reactPresetsNames = Object.keys(reactPresets);
@@ -18,7 +18,7 @@ const questions: Questions = [
         value: 'react',
       },
     ],
-    message: 'What do you prefer?',
+    message: 'What do you want?',
     name: 'opt',
     type: 'list',
   },
@@ -53,6 +53,6 @@ export default function arch() {
   inquirer
     .prompt(questions)
     .then((resp: Answers) => {
-      return build(resp.opt, resp.dir, resp.preset);
+      return cli(resp.opt, resp.dir, resp.preset);
     });
 }
