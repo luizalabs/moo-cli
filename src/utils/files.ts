@@ -1,6 +1,6 @@
 import { writeFileSync } from 'fs';
-import mkdirp from 'mkdirp';
 import { join } from 'path';
+import { mkdir } from 'shelljs';
 
 export function write(
   content: string,
@@ -12,6 +12,6 @@ export function write(
   const path = join(dir, name);
   const file = `${fname}.${ext}`;
 
-  mkdirp.sync(path);
+  mkdir('-p', path);
   writeFileSync(join(path, file), content);
 }
