@@ -1,4 +1,4 @@
 export default {
-  'js-sass-jest': '',
-  'ts-sass-jest-redux': '--scripts-version=react-scripts-ts',
+  'js-css-jest-pwa': '',
+  'ts-css-jest-pwa': '--scripts-version=react-scripts-ts',
 };

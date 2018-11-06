@@ -10,8 +10,6 @@ export default function jsDefCfgs(dir: string) {
   );
 
   eslintTask(dir);
-  // processMain(dir);
-  // processHello(dir);
 
   console.log(
     cowsay.say({
@@ -48,18 +46,3 @@ function eslintSettings(config: any) {
 
   return config;
 }
-
-// // Workarounds
-// function processMain(dir: string) {
-//   const file = join(dir, 'src', 'main.js');
-//   const code = readFileSync(file, 'utf8');
-//   const result = code.replace('h => h', 'create => create');
-//   writeFileSync(file, result, 'utf8');
-// }
-
-// function processHello(dir: string) {
-//   const file = join(dir, 'src', 'components', 'HelloWorld.vue');
-//   const code = readFileSync(file, 'utf8');
-//   const result = code.replace('msg: String', 'msg: { type: String, default: \'\' }');
-//   writeFileSync(file, result, 'utf8');
-// }
