@@ -6,6 +6,7 @@ jest.config.js
 package-lock.json
 yarn.lock
 ts*.json
+moo-cli-*
 
 # Logs
 logs
@@ -83,3 +84,6 @@ typings/
 
 # Serverless directories
 .serverless
+
+# Test directory
+test

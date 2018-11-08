@@ -1,6 +1,8 @@
-import { readFileSync, writeFileSync } from 'fs';
+import cowsay from 'cowsay';
 import { join } from 'path';
+import { rm } from 'shelljs';
 import { log, style } from '../../utils/console';
+import { read, readJSON, write, writeJSON } from '../../utils/files';
 
 export default function jsDefCfgs(dir: string) {
   log(
@@ -9,26 +11,30 @@ export default function jsDefCfgs(dir: string) {
     style.Green,
   );
 
-  const pack = join(dir, 'package.json');
-  const json = readFileSync(pack, { encoding: 'utf8' });
-  const cfgs = JSON.parse(json);
-  const { eslintConfig } = cfgs;
+  delTests(dir);
+  eslintTask(dir);
+  babelConfig(dir);
+  processMain(dir);
+  processHello(dir);
 
-  cfgs.eslintConfig = eslint(eslintConfig);
-
-  const result = JSON.stringify(cfgs, null, 2);
-
-  writeFileSync(pack, result, { encoding: 'utf8' });
-
-  log(
-    'We started a new MOOvelous project!',
-    style.Bright,
-    style.Blue,
+  console.log(
+    cowsay.say({
+      text: 'We started a new MOOvelous project!',
+    }),
   );
 }
 
-// Helpers
-function eslint(config: any) {
+// Eslint
+function eslintTask(dir: string) {
+  const pack = readJSON(dir, 'package.json');
+  const { eslintConfig } = pack;
+
+  pack.eslintConfig = eslintSettings(eslintConfig);
+
+  writeJSON(pack, dir, 'package.json');
+}
+
+function eslintSettings(config: any) {
   config.extends = [
     'plugin:vue/recommended',
     '@vue/standard',
@@ -66,4 +72,38 @@ function eslint(config: any) {
   };
 
   return config;
+}
+
+// Workarounds
+function babelConfig(dir: string) {
+  const file = join(dir, 'babel.config.js');
+  const pack = readJSON(dir, 'package.json');
+
+  rm(file);
+
+  pack.babel = {
+    presets: ['@vue/app'],
+  };
+
+  writeJSON(pack, dir, 'package.json');
+}
+
+function processMain(dir: string) {
+  const code = read(dir, 'src', 'main.js');
+  const result = code.replace('h => h', 'create => create');
+
+  write(result, dir, 'src', 'main.js');
+}
+
+function processHello(dir: string) {
+  const code = read(dir, 'src', 'components', 'HelloWorld.vue');
+  const result = code.replace('msg: String', 'msg: { type: String, default: \'\' }');
+
+  write(result, dir, 'src', 'components', 'HelloWorld.vue');
+}
+
+function delTests(dir: string) {
+  const path = join(dir, 'tests');
+
+  rm('-rf', path);
 }

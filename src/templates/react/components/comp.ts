@@ -26,7 +26,7 @@ class {{name}} extends Component {
     return (
       <div
         className="{{name}}">
-        {{name}} was created!
+        {{name}} component by moo-cli
       </div>
     ){{#airbnb}};{{/airbnb}}
   }
