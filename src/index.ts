@@ -70,6 +70,7 @@ cli.on('--help', () => {
 });
 
 cli.parse(process.argv);
+
 if (!cli.args.length) {
   cli.help();
 }
