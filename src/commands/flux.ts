@@ -4,7 +4,7 @@ import { join } from 'path';
 
 import { reactFluxTemplate } from '../templates/react';
 import { vueFluxTemplate } from '../templates/vue';
-import { write } from '../utils/files';
+import { writeCode } from '../utils/files';
 import options from '../utils/options';
 import { ICommandOptions } from '../utils/options';
 import { isRootPath } from '../utils/validations';
@@ -36,8 +36,8 @@ export default function flux(name: string, actiondir: string, reducerdir: string
     const actionFile = Mustache.render(templateAction, data);
     const reducerFile = Mustache.render(templateReducer, data);
 
-    write(actionFile, '', ext, actionDirOutput, name);
-    write(reducerFile, '', ext, reducerDirOutput, name);
+    writeCode(actionFile, '', ext, actionDirOutput, name);
+    writeCode(reducerFile, '', ext, reducerDirOutput, name);
 
     console.log(
       '\n',
