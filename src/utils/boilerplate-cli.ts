@@ -3,12 +3,15 @@ const figlet = require("figlet");
 const shell = require("shelljs");
 const { join } = require('path');
 const fs = require('fs');
+const {boilerplates} = require('../common/boilerplates');
 
-class JuggernautCli {
+class BoilerplateCli {
   dirName: string;
+  boilerplate: string;
 
-  constructor(dirname: string) {
+  constructor(dirname: string, boilerplate: string) {
     this.dirName = dirname;
+    this.boilerplate = boilerplate;
   }
 
   insertNameProject() {
@@ -31,8 +34,7 @@ class JuggernautCli {
         })
       )
     );
-
-    const command = shell.exec(`git clone https://github.com/SoftboxLab/juggernaut.git ${this.dirName}`, {async:true}, () => {
+    const command = shell.exec(`git clone ${boilerplates[this.boilerplate]} ${this.dirName}`, {async:true}, () => {
         if (!command.code) {
             shell.cd(this.dirName);
             this.insertNameProject();
@@ -52,4 +54,4 @@ class JuggernautCli {
     });
   };
 }
-export default JuggernautCli;
+export default BoilerplateCli;

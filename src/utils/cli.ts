@@ -5,7 +5,7 @@ import reactPresets from '../templates/react/presets';
 import vueJSDefDeps from '../templates/vue/js-def-deps';
 import vuePresets from '../templates/vue/presets';
 import { log, style } from './console';
-import JuggernautCli from './juggernaut-cli';
+import BoilerplateCli from './boilerplate-cli';
 
 export default function build(framework: string, dir: string, pre: string, boilerplate = '') {
   log(
@@ -16,9 +16,9 @@ export default function build(framework: string, dir: string, pre: string, boile
 
   rm('-rf', dir);
   if (boilerplate === 'juggernaut') {
-    const juggernautCli = new JuggernautCli(dir);
-    juggernautCli.cloneJuggernaut();
-    juggernautCli.insertNameProject();
+    const boilerplateCli = new BoilerplateCli(dir, 'juggernaut');
+    boilerplateCli.cloneJuggernaut();
+    boilerplateCli.insertNameProject();
     return;
   }
   const presets = framework === 'vue' ? vuePresets : reactPresets;
