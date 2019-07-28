@@ -81,7 +81,6 @@ export default function arch() {
   inquirer
     .prompt(questions)
     .then((resp: Answers) => {
-      console.log(resp)
       return cli(resp.opt, resp.dir, resp.preset, resp.boilerplate);
     });
 }
