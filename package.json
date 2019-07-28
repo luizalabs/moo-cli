@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SoftboxLab/moo-cli.git"
+    "url": "git+https://github.com/SoftboxLab/juggernaut-cli.git"
   },
   "keywords": [
     "cli",
@@ -35,9 +35,9 @@
   "author": "Alex Bruno <alexcaceres@softbox.com.br>, Lucas Vilaboim <lucasvilaboim@softbox.com.br>, Pablo Henrique Penha Silva <pablohpsilva@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/SoftboxLab/moo-cli/issues"
+    "url": "https://github.com/SoftboxLab/juggernaut-cli/issues"
   },
-  "homepage": "https://github.com/SoftboxLab/moo-cli#readme",
+  "homepage": "https://github.com/SoftboxLab/juggernaut-cli#readme",
   "lint-staged": {
     "*.{ts}": [
       "npm run lint -- --fix",
