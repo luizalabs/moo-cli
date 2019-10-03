@@ -1,3 +1,3 @@
 export const boilerplates = {
-  juggernaut: 'https://github.com/SoftboxLab/juggernaut.git'
-}
+  juggernaut: 'https://github.com/SoftboxLab/juggernaut.git',
+};

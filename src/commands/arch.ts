@@ -39,8 +39,8 @@ const questions: Questions = [
       },
       {
         name: 'No',
-        value: false
-      }
+        value: false,
+      },
     ],
     message: 'Use a boilerplate?',
     name: 'Useboilerplate',
@@ -52,7 +52,7 @@ const questions: Questions = [
       {
         name: 'Juggernaut',
         value: 'juggernaut',
-      }
+      },
     ],
     message: 'Select a boilerplate:',
     name: 'boilerplate',
