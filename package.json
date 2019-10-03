@@ -1,5 +1,5 @@
 {
-	"name": "teste",
+	"name": "@softboxlab/moo-cli",
 	"version": "0.6.1",
 	"description": "A MOOvelous CLI",
 	"main": "dist/index.js",
