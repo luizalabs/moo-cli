@@ -1,9 +1,9 @@
-const chalk = require("chalk");
-const figlet = require("figlet");
-const shell = require("shelljs");
-const { join } = require('path');
-const fs = require('fs');
-const {boilerplates} = require('../common/boilerplates');
+import chalk from "chalk";
+import figlet from "figlet";
+import shell from "shelljs";
+import { join } from 'path';
+import fs from 'fs';
+import {boilerplates} from '../common/boilerplates';
 
 class BoilerplateCli {
   dirName: string;
@@ -34,12 +34,16 @@ class BoilerplateCli {
         })
       )
     );
-    const command = shell.exec(`git clone ${boilerplates[this.boilerplate]} ${this.dirName}`, {async:true}, () => {
+    const command: any = shell.exec(`git clone ${boilerplates[this.boilerplate]} ${this.dirName}`, {async:true}, () => {
         if (!command.code) {
             shell.cd(this.dirName);
             this.insertNameProject();
-            shell.exec(`git remote remove origin`, {async: true});
-            const instal = shell.exec('npm install', {async: true}, () => {
+            shell.exec('rm -rf .git');
+            shell.exec('git init');
+            shell.exec('git add .');
+            shell.exec('git commit -m "First Commit"');
+
+            const instal: any = shell.exec('npm i', {async: true}, () => {
                 if (!instal.code) {
                     console.log(chalk.green('Juggernaut is here!!!'));
                 } else {
