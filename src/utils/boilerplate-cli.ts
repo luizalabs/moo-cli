@@ -27,8 +27,8 @@ class BoilerplateCli {
       shell.exit(1);
     }
     shell.echo(
-      chalk.red(
-        figlet.textSync('Juggernaut CLI', {
+      chalk.hex('#FBD488')(
+        figlet.textSync('Juggernaut', {
           horizontalLayout: 'default',
           verticalLayout: 'default',
         }),
@@ -36,12 +36,9 @@ class BoilerplateCli {
       '\n'
     );
     const command: any = shell
-    .exec(`git clone ${boilerplates[this.boilerplate]} ${this.dirName}`, {async: true}, () => {
+    .exec(`git clone ${boilerplates[this.boilerplate].url} ${this.dirName}`, (code) => {
       shell.cd(this.dirName);
       shell.exec('rm -rf .git netlify.toml', {async: true});
-      shell.exec('git init', {async: true});
-      shell.exec('git add .', {async: true});
-      shell.exec('git commit -m "First Commit"', {async: true});
       this.insertNameProject();
 
       shell.exec('yarn', {async: true}, (yarncode) => {
@@ -51,7 +48,7 @@ class BoilerplateCli {
           }
           shell.echo('\n', chalk.green(`${boilerplates[this.boilerplate].name} is here!`))
       });
-      if (command.code) {
+      if (code) {
         console.log(command.stderr);
         console.log(chalk.red('Error to clone.'));
         }

@@ -53,6 +53,10 @@ const questions: Questions = [
         name: 'Juggernaut',
         value: 'juggernaut',
       },
+      {
+        name: 'I don\'t need a boilerplate',
+        value: false
+      },
     ],
     message: 'Select a boilerplate:',
     name: 'boilerplate',
