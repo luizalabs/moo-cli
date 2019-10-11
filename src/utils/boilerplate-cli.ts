@@ -23,16 +23,17 @@ class BoilerplateCli {
 
   public cloneJuggernaut() {
     if (!shell.which('git')) {
-        console.log('Sorry, this script requires git');
-        shell.exit(1);
+      shell.echo('Sorry but this script requires Git.');
+      shell.exit(1);
     }
-    console.log(
+    shell.echo(
       chalk.red(
         figlet.textSync('Juggernaut CLI', {
           horizontalLayout: 'default',
           verticalLayout: 'default',
         }),
       ),
+      '\n'
     );
     const command: any = shell
     .exec(`git clone ${boilerplates[this.boilerplate]} ${this.dirName}`, {async: true}, () => {
@@ -43,13 +44,12 @@ class BoilerplateCli {
       shell.exec('git commit -m "First Commit"', {async: true});
       this.insertNameProject();
 
-      const instal: any = shell.exec('npm install', {async: true}, () => {
-          if (!instal.code) {
-              console.log(chalk.green('Juggernaut is here!!!'));
-          } else {
-              console.log(command.stderr);
-              console.log(chalk.red('Error to install dependcies.'));
+      shell.exec('yarn', {async: true}, (yarncode) => {
+          if (yarncode) {
+            shell.echo(chalk.red('Error to install dependencies.'));
+            shell.exit(1);
           }
+          shell.echo('\n', chalk.green(`${boilerplates[this.boilerplate].name} is here!`))
       });
       if (command.code) {
         console.log(command.stderr);

@@ -7,7 +7,7 @@ import vuePresets from '../templates/vue/presets';
 import BoilerplateCli from './boilerplate-cli';
 import { log, style } from './console';
 
-export default function build(framework: string, dir: string, pre: string, boilerplate = '') {
+export default function build(framework: string, dir: string, pre: string, boilerplate: string = '') {
   log(
     `Building ${framework} project architecture, please be patient...`,
     style.Bright,

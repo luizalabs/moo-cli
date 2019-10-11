@@ -42,8 +42,8 @@ const questions: Questions = [
         value: false,
       },
     ],
-    message: 'Use a boilerplate?',
-    name: 'Useboilerplate',
+    message: 'Do you need a boilerplate?',
+    name: 'needBoilerplate',
     type: 'list',
     when: (resp: Answers) => resp.opt === 'react',
   },
@@ -57,7 +57,7 @@ const questions: Questions = [
     message: 'Select a boilerplate:',
     name: 'boilerplate',
     type: 'list',
-    when: (resp: Answers) => resp.opt === 'react' && resp.Useboilerplate,
+    when: (resp: Answers) => resp.opt === 'react' && resp.needBoilerplate,
   },
   {
     choices: reactPresetsNames.map((value) => {
@@ -66,7 +66,7 @@ const questions: Questions = [
     message: 'Choose a preset:',
     name: 'preset',
     type: 'list',
-    when: (resp: Answers) => resp.opt === 'react' && !resp.Useboilerplate,
+    when: (resp: Answers) => resp.opt === 'react' && (!resp.needBoilerplate || !resp.boilerplate),
   },
   {
     default: (resp: Answers) => `moo-cli-${resp.opt}`,
