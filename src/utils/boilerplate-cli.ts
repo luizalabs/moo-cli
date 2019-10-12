@@ -38,7 +38,9 @@ class BoilerplateCli {
         if (!command.code) {
             shell.cd(this.dirName);
             this.insertNameProject();
-            shell.exec('rm -rf .git');
+            if (this.boilerplate === 'juggernaut') {
+              shell.exec('rm -rf .git .github netlify.toml', {async: true});
+            }
             shell.exec('git init');
             shell.exec('git add .');
             shell.exec('git commit -m "First Commit"');
@@ -46,9 +48,6 @@ class BoilerplateCli {
             const instal: any = shell.exec('npm i', {async: true}, () => {
                 if (!instal.code) {
                     console.log(chalk.green('Juggernaut is here!!!'));
-                } else {
-                    console.log(command.stderr);
-                    console.log(chalk.red('Error to install dependcies.'));
                 }
             });
         } else {
