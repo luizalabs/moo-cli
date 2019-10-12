@@ -33,3 +33,13 @@ To know what commands/options are available, just run it with no arguments or as
 or just
 
 `moo -h`
+
+### Using boilerplates in your project
+
+We have some boilerplates that can facilitate the development of your application.
+
+### React
+
+#### Juggernaut
+
+[Repository](https://github.com/SoftboxLab/juggernaut)
