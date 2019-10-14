@@ -6,7 +6,7 @@ Its purpose is to standardize creation of new projects, components and resources
 
 ## Get started
 
-### Online
+### Using npx
 
 `npx -p @softboxlab/moo-cli moo [command] [options]`
 
@@ -26,10 +26,26 @@ Or just:
 
 `moo [command] [options]`
 
+---
+
+### Commands
+
+`moo arch`: creates a new project
+
+`moo comp [options] <component_name>`: creates a new component inside your new project. The options are:
+
+Name | Description
+--- | ---
+`--vue` or `-v` | Choose Vue as the framework for your component
+`--react` or `-r` | Choose React as the framework for your component
+`--dest` or `-d` | Choose your component's directory - *default: `src/components`*
+`--func` or `-f` | Make your component functional - *only works with React*
+`--flux` or `-x` | Add Vuex/Redux functions - *only works with React*
+`--test` or `-t` | Add tests to your component
+`--ts` | Add TypeScript to your component
+
+---
+
 To know what commands/options are available, just run it with no arguments or ask for help, like this:
 
-`moo --help`
-
-or just
-
-`moo -h`
+`moo --help` or just `moo -h`
