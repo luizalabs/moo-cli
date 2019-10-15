@@ -45,10 +45,12 @@ class BoilerplateCli {
             shell.exec('git add .');
             shell.exec('git commit -m "First Commit"');
 
-            const instal: any = shell.exec('npm i', {async: true}, () => {
-                if (!instal.code) {
-                    console.log(chalk.green('Juggernaut is here!!!'));
-                }
+            shell.exec('yarn', (yarncode) => {
+              if (yarncode) {
+                shell.echo(chalk.red('Error to install dependencies.'));
+                shell.exit(1);
+              }
+              shell.echo('\n', chalk.green(`${boilerplates[this.boilerplate].name} is here!`));
             });
         } else {
             console.log(command.stderr);
