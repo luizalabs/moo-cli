@@ -42,7 +42,8 @@ Name | Description
 `--func` or `-f` | Make your component functional - *only works with React*
 `--flux` or `-x` | Add Vuex/Redux functions - *only works with React*
 `--test` or `-t` | Add tests to your component
-`--airbnb` or `-a` | Add [Airbnb JS Styleguide](https://github.com/airbnb/javascript) rules - *only works with React Class components*
+`--airbnb` or `-a` | Add [Airbnb JS Styleguide](https://github.com/airbnb/javascript) rules
+`--clean` | Create a clean component - *only works with React Class components*
 `--ts` | Add TypeScript to your component
 
 ---
