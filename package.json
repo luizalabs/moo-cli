@@ -58,7 +58,6 @@
 		"shelljs": "^0.8.2"
 	},
 	"devDependencies": {
-		"@softboxlab/moo-cli": "^0.6.1",
 		"@types/figlet": "^1.2.0",
 		"@types/inquirer": "0.0.43",
 		"@types/mustache": "^0.8.31",

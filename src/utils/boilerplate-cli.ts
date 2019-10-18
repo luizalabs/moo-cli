@@ -9,12 +9,12 @@ class BoilerplateCli {
   public dirName: string;
   public boilerplate: string;
 
-  constructor (dirname: string, boilerplate: string) {
+  constructor(dirname: string, boilerplate: string) {
     this.dirName = dirname;
     this.boilerplate = boilerplate;
   }
 
-  public insertNameProject () {
+  public insertNameProject() {
     const packagePath = join(`${process.cwd()}`, 'package.json');
     const packageJson = require(packagePath);
 
@@ -22,7 +22,7 @@ class BoilerplateCli {
     fs.writeFileSync(packagePath, JSON.stringify(packageJson, null, '\t'));
   }
 
-  public cloneJuggernaut () {
+  public cloneJuggernaut() {
     if (!shell.which('git')) {
       shell.echo('Sorry but this script requires Git.');
       shell.exit(1);
@@ -38,7 +38,11 @@ class BoilerplateCli {
       '\n',
     );
 
-    shell.exec(`git clone ${boilerplates[this.boilerplate].url} ${this.dirName}`, () => {
+    shell.exec(`git clone ${boilerplates[this.boilerplate].url} ${this.dirName}`, (code) => {
+      if (code) {
+        shell.exit(code);
+      }
+
       shell.cd(this.dirName);
 
       if (this.boilerplate === 'juggernaut') {
