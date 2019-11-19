@@ -4,9 +4,10 @@ import reactJSDefDeps from '../templates/react/js-def-deps';
 import reactPresets from '../templates/react/presets';
 import vueJSDefDeps from '../templates/vue/js-def-deps';
 import vuePresets from '../templates/vue/presets';
+import BoilerplateCli from './boilerplate-cli';
 import { log, style } from './console';
 
-export default function build(framework: string, dir: string, pre: string) {
+export default function build(framework: string, dir: string, pre: string, boilerplate: string = '') {
   log(
     `Building ${framework} project architecture, please be patient...`,
     style.Bright,
@@ -14,6 +15,13 @@ export default function build(framework: string, dir: string, pre: string) {
   );
 
   rm('-rf', dir);
+
+  if (boilerplate === 'juggernaut') {
+    const boilerplateCli = new BoilerplateCli(dir, 'juggernaut');
+    boilerplateCli.cloneJuggernaut();
+
+    return;
+  }
 
   const presets = framework === 'vue' ? vuePresets : reactPresets;
   const selected = JSON.stringify(presets[pre]);

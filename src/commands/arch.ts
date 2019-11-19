@@ -32,13 +32,45 @@ const questions: Questions = [
     when: (resp: Answers) => resp.opt === 'vue',
   },
   {
+    choices: [
+      {
+        name: 'Yes',
+        value: true,
+      },
+      {
+        name: 'No',
+        value: false,
+      },
+    ],
+    message: 'Do you need a boilerplate?',
+    name: 'needBoilerplate',
+    type: 'list',
+    when: (resp: Answers) => resp.opt === 'react',
+  },
+  {
+    choices: [
+      {
+        name: 'Juggernaut',
+        value: 'juggernaut',
+      },
+      {
+        name: 'I don\'t need a boilerplate',
+        value: false,
+      },
+    ],
+    message: 'Select a boilerplate:',
+    name: 'boilerplate',
+    type: 'list',
+    when: (resp: Answers) => resp.opt === 'react' && resp.needBoilerplate,
+  },
+  {
     choices: reactPresetsNames.map((value) => {
       return { value, name: value };
     }),
     message: 'Choose a preset:',
     name: 'preset',
     type: 'list',
-    when: (resp: Answers) => resp.opt === 'react',
+    when: (resp: Answers) => resp.opt === 'react' && (!resp.needBoilerplate || !resp.boilerplate),
   },
   {
     default: (resp: Answers) => `moo-cli-${resp.opt}`,
@@ -48,11 +80,9 @@ const questions: Questions = [
 ];
 
 export default function arch() {
-  console.log('\n');
-
   inquirer
     .prompt(questions)
     .then((resp: Answers) => {
-      return cli(resp.opt, resp.dir, resp.preset);
+      return cli(resp.opt, resp.dir, resp.preset, resp.boilerplate);
     });
 }
