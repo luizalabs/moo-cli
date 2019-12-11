@@ -72,4 +72,16 @@ Link `moo-cli` in your project
 
 Then run your linked `moo-cli`
 
+`moo -h`
+
 `npx moo <COMMAND>` or `./node_modules/.bin/moo <COMMAND>`
+
+### Using boilerplates in your project
+
+We have some boilerplates that can facilitate the development of your application.
+
+### React
+
+#### Juggernaut
+
+[Repository](https://github.com/SoftboxLab/juggernaut)
