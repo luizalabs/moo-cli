@@ -1,6 +1,7 @@
 import cow from 'cowsay';
 import Mustache from 'mustache';
 import { join } from 'path';
+import shell from 'shelljs';
 
 import reactTemplate from '../templates/react';
 import vueTemplate from '../templates/vue';
@@ -17,12 +18,8 @@ export default function comp(name: string, cmd: any) {
     const framework = opts.react ? 'react' : opts.vue ? 'vue' : '';
 
     if (!framework) {
-      console.log(
-        '\n',
-        'Framework option is required',
-        '\n',
-      );
-      process.exit();
+      shell.echo('error: missing required argument `framework`');
+      shell.exit(1);
     }
 
     const type = func ? 'func' : 'comp';
