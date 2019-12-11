@@ -42,6 +42,8 @@ Name | Description
 `--func` or `-f` | Make your component functional - *only works with React*
 `--flux` or `-x` | Add Vuex/Redux functions - *only works with React*
 `--test` or `-t` | Add tests to your component
+`--airbnb` or `-a` | Add [Airbnb JS Styleguide](https://github.com/airbnb/javascript) rules
+`--clean` | Create a clean component - *only works with React Class components*
 `--ts` | Add TypeScript to your component
 
 ---
@@ -49,3 +51,37 @@ Name | Description
 To know what commands/options are available, just run it with no arguments or ask for help, like this:
 
 `moo --help` or just `moo -h`
+
+## How to contribute
+
+Build a `moo-cli` version
+
+`yarn build` or `npm run build`
+
+Create a `link` inside `dist` folder
+
+`yarn link` or `npm link`
+
+Install `moo-cli` in some project
+
+`yarn add @softbox/moo-cli` or `npm i @softbox/moo-cli`
+
+Link `moo-cli` in your project
+
+`yarn link "@softboxlab/moo-cli"` or `npm link "@softboxlab/moo-cli"`
+
+Then run your linked `moo-cli`
+
+`moo -h`
+
+`npx moo <COMMAND>` or `./node_modules/.bin/moo <COMMAND>`
+
+### Using boilerplates in your project
+
+We have some boilerplates that can facilitate the development of your application.
+
+### React
+
+#### Juggernaut
+
+[Repository](https://github.com/SoftboxLab/juggernaut)
