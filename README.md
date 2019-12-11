@@ -49,3 +49,25 @@ Name | Description
 To know what commands/options are available, just run it with no arguments or ask for help, like this:
 
 `moo --help` or just `moo -h`
+
+## How to contribute
+
+Build a `moo-cli` version
+
+`yarn build` or `npm run build`
+
+Create a `link` inside `dist` folder
+
+`yarn link` or `npm link`
+
+Install `moo-cli` in some project
+
+`yarn add @softbox/moo-cli` or `npm i @softbox/moo-cli`
+
+Link `moo-cli` in your project
+
+`yarn link "@softboxlab/moo-cli"` or `npm link "@softboxlab/moo-cli"`
+
+Then run your linked `moo-cli`
+
+`npx moo <COMMAND>` or `./node_modules/.bin/moo <COMMAND>`

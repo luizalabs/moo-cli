@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 
+import chalk from 'chalk';
 import cli from 'commander';
 import cow from 'cowsay';
+import shell from 'shelljs';
 
 import pack from '../package.json';
 import arch from './commands/arch';
@@ -67,6 +69,11 @@ cli.on('--help', () => {
     'to ask help about specific command',
     '\n',
   );
+});
+
+cli.on('command:*', () => {
+  shell.echo(chalk.red('Invalid command: %s\nSee --help for a list of available commands.', cli.args.join(' ')));
+  shell.exit(1);
 });
 
 cli.parse(process.argv);
