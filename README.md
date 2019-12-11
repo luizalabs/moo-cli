@@ -54,16 +54,20 @@ To know what commands/options are available, just run it with no arguments or as
 
 Build a `moo-cli` version
 
-`yarn build`
+`yarn build` or `npm run build`
 
 Create a `link` inside `dist` folder
 
-`yarn link "@softboxlab/moo-cli"` or `npm link "@softboxlab/moo-cli"`
+`yarn link` or `npm link`
 
 Install `moo-cli` in some project
 
-`yarn add @softbox/moo-cli`
+`yarn add @softbox/moo-cli` or `npm i @softbox/moo-cli`
+
+Link `moo-cli` in your project
+
+`yarn link "@softboxlab/moo-cli"` or `npm link "@softboxlab/moo-cli"`
 
 Then run your linked `moo-cli`
 
-`./node_modules/.bin/moo <COMMAND>`
+`npx moo <COMMAND>` or `./node_modules/.bin/moo <COMMAND>`
