@@ -72,8 +72,6 @@ Link `moo-cli` in your project
 
 Then run your linked `moo-cli`
 
-`moo -h`
-
 `npx moo <COMMAND>` or `./node_modules/.bin/moo <COMMAND>`
 
 ### Using boilerplates in your project
